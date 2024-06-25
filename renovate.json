@@ -1,1 +1,138 @@
-{}
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["config:recommended"],
+    "regexManagers": [
+      {
+        "fileMatch": ["^newrelic/newrelic-initialize-variables\\.sh$"],
+        "matchStrings": [
+          "export NEWRELIC_CHART_VERSION=\"(?<currentValue>\\S+)\""
+        ],
+        "datasourceTemplate": "helm",
+        "depNameTemplate": "nri-bundle",
+        "versioningTemplate": "helm"
+      },
+      {
+        "fileMatch": ["^newrelic/newrelic-initialize-variables\\.sh$"],
+        "matchStrings": [
+          "export NEWRELIC_INFRA_TAG=\"(?<currentValue>\\S+)\""
+        ],
+        "datasourceTemplate": "docker",
+        "depNameTemplate": "newrelic/infrastructure-bundle",
+        "versioningTemplate": "semver"
+      },
+      {
+        "fileMatch": ["^newrelic/newrelic-initialize-variables\\.sh$"],
+        "matchStrings": [
+          "export NEWRELIC_KUBE_EVENTS_TAG=\"(?<currentValue>\\S+)\""
+        ],
+        "datasourceTemplate": "docker",
+        "depNameTemplate": "newrelic/nri-kube-events",
+        "versioningTemplate": "semver"
+      },
+      {
+        "fileMatch": ["^newrelic/newrelic-initialize-variables\\.sh$"],
+        "matchStrings": [
+          "export NEWRELIC_PROMETHEUS_AGENT_TAG=\"(?<currentValue>\\S+)\""
+        ],
+        "datasourceTemplate": "docker",
+        "depNameTemplate": "newrelic/nri-prometheus",
+        "versioningTemplate": "semver"
+      },
+      {
+        "fileMatch": ["^newrelic/newrelic-initialize-variables\\.sh$"],
+        "matchStrings": [
+          "export NEWRELIC_PROMETHEUS_CONFIGURATOR_TAG=\"(?<currentValue>\\S+)\""
+        ],
+        "datasourceTemplate": "docker",
+        "depNameTemplate": "newrelic/newrelic-prometheus-configurator",
+        "versioningTemplate": "semver"
+      },
+      {
+        "fileMatch": ["^newrelic/newrelic-initialize-variables\\.sh$"],
+        "matchStrings": [
+          "export NEWRELIC_PROMETHEUS_TAG=\"(?<currentValue>\\S+)\""
+        ],
+        "datasourceTemplate": "docker",
+        "depNameTemplate": "quay.io/prometheus/prometheus",
+        "versioningTemplate": "semver"
+      },
+      {
+        "fileMatch": ["^newrelic/newrelic-initialize-variables\\.sh$"],
+        "matchStrings": [
+          "export NEWRELIC_METADATA_INJECTION_TAG=\"(?<currentValue>\\S+)\""
+        ],
+        "datasourceTemplate": "docker",
+        "depNameTemplate": "newrelic/k8s-metadata-injection",
+        "versioningTemplate": "semver"
+      },
+      {
+        "fileMatch": ["^newrelic/newrelic-initialize-variables\\.sh$"],
+        "matchStrings": [
+          "export NEWRELIC_KUBERNETES_TAG=\"(?<currentValue>\\S+)\""
+        ],
+        "datasourceTemplate": "docker",
+        "depNameTemplate": "newrelic/nri-kubernetes",
+        "versioningTemplate": "semver"
+      },
+      {
+        "fileMatch": ["^newrelic/newrelic-initialize-variables\\.sh$"],
+        "matchStrings": [
+          "export NEWRELIC_K8S_EVENT_FORWARDER_TAG=\"(?<currentValue>\\S+)\""
+        ],
+        "datasourceTemplate": "docker",
+        "depNameTemplate": "newrelic/k8s-events-forwarder",
+        "versioningTemplate": "semver"
+      },
+      {
+        "fileMatch": ["^newrelic/newrelic-initialize-variables\\.sh$"],
+        "matchStrings": [
+          "export NEWRELIC_KUBE_STATE_METRICS_TAG=\"(?<currentValue>\\S+)\""
+        ],
+        "datasourceTemplate": "docker",
+        "depNameTemplate": "registry.k8s.io/kube-state-metrics/kube-state-metrics",
+        "versioningTemplate": "semver"
+      },
+      {
+        "fileMatch": ["^newrelic/newrelic-initialize-variables\\.sh$"],
+        "matchStrings": [
+          "export NEWRELIC_FLUENTBIT_OUTPUT_TAG=\"(?<currentValue>\\S+)\""
+        ],
+        "datasourceTemplate": "docker",
+        "depNameTemplate": "newrelic/newrelic-fluentbit-output",
+        "versioningTemplate": "semver"
+      },
+      {
+        "fileMatch": ["^newrelic/newrelic-initialize-variables\\.sh$"],
+        "matchStrings": [
+          "export INGRESS_NGINX_KUBE_WEBHOOK_CERTGEN_TAG=\"(?<currentValue>\\S+)\""
+        ],
+        "datasourceTemplate": "docker",
+        "depNameTemplate": "registry.k8s.io/ingress-nginx/kube-webhook-certgen",
+        "versioningTemplate": "semver"
+      }
+    ],
+    "packageRules": [
+      {
+        "matchDatasources": ["helm"],
+        "registryUrls": ["https://helm-charts.newrelic.com"],
+        "packagePatterns": ["nri-bundle"],
+        "groupName": "newrelic-helm-chart-updates",
+        "groupSlug": "newrelic-updates",
+        "automerge": false
+      },
+      
+      {
+        "matchDatasources": ["docker"],
+        "groupName": "newrelic-helm-chart-updates",
+        "matchPackageNames": ["nri-bundle","newrelic/infrastructure-bundle","newrelic/nri-kube-events","newrelic/nri-prometheus","newrelic/newrelic-prometheus-configurator","quay.io/prometheus/prometheus","newrelic/k8s-metadata-injection","newrelic/nri-kubernetes","registry.k8s.io/kube-state-metrics/kube-state-metrics","newrelic/newrelic-fluentbit-output","registry.k8s.io/ingress-nginx/kube-webhook-certgen"],
+        "matchUpdateTypes": ["major", "minor", "patch"],
+        "separateMajorMinor": true,
+        "separateMinorPatch": true,
+        "groupSlug": "newrelic-updates",
+        "automerge": false
+      }
+    ],
+    "semanticCommits": "disabled"
+      }
+  
+    
