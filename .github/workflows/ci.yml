@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1 # Comment that Renovate bot will remove later on
-
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Renovate Bot GitHub Action
+        uses: renovatebot/github-action@v40.1.12
+            
