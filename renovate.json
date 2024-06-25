@@ -126,8 +126,6 @@
         "groupName": "newrelic-helm-chart-updates",
         "matchPackageNames": ["nri-bundle","newrelic/infrastructure-bundle","newrelic/nri-kube-events","newrelic/nri-prometheus","newrelic/newrelic-prometheus-configurator","quay.io/prometheus/prometheus","newrelic/k8s-metadata-injection","newrelic/nri-kubernetes","registry.k8s.io/kube-state-metrics/kube-state-metrics","newrelic/newrelic-fluentbit-output","registry.k8s.io/ingress-nginx/kube-webhook-certgen"],
         "matchUpdateTypes": ["major", "minor", "patch"],
-        "separateMajorMinor": true,
-        "separateMinorPatch": true,
         "groupSlug": "newrelic-updates",
         "automerge": false
       }
